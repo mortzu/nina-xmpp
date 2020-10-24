@@ -1,0 +1,5 @@
+config.php
+/cache/*
+!/cache/.gitkeep
+/data/*
+!/data/.gitkeep
