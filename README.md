@@ -9,3 +9,9 @@ You have to install the [mod_post_msg](https://modules.prosody.im/mod_post_msg.h
 [prosody](https://prosody.im/).
 
 Then copy config.defaults.php to config.php and fix the values.
+
+To run it periodically you have to setup a cronjob like this (fix the path to the script):
+
+```
+*/5 * * * * /usr/bin/php /opt/nina-xmpp/get-data.php
+```
