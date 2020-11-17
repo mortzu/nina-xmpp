@@ -56,7 +56,7 @@ function br2nl($string) {
   return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
 }
 
-function send_xmpp($username, $server, $password, $target_jid, $text) {
+function send_xmpp($xmpp_apiurl, $xmpp_username, $xmpp_server, $xmpp_password, $target_jid, $text) {
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, "{$xmpp_apiurl}/{$target_jid}");
   curl_setopt($ch, CURLOPT_HEADER, 1);
@@ -88,7 +88,7 @@ foreach ($nina_urls as $nina_url) {
 
       if (!in_array(md5($text), $cached)) {
         file_put_contents($cache_dir . '/' . $today, md5($text), FILE_APPEND | LOCK_EX);
-        send_xmpp($username, $server, $password, $xmpp_receiver, $text);
+        send_xmpp($xmpp_apiurl, $xmpp_username, $xmpp_server, $xmpp_password, $xmpp_receiver, $text);
       }
     }
   }
